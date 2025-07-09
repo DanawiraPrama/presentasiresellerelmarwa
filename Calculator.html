@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dapatkan Penghasilan Halal dari Rumah! Jadi Reseller Haji & Umroh El Marwa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #701c1a;
+            --secondary: #e67e22;
+            --accent: #25D366;
+            --light: #f9f9f9;
+            --dark: #2c3e50;
+            --text: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            display: inline-block;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: #d35400;
+        }
+        
+        .btn-whatsapp {
+            background-color: var(--accent);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+        
+        .btn-region {
+            background-color: var(--primary);
+        }
+        
+        .btn-region:hover {
+            background-color: #5a1614;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        /* Commission Calculator */
+        .calculator-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+        
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .calculator-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .calculator-group {
+            margin-bottom: 15px;
+        }
+        
+        .calculator-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .calculator-group input, .calculator-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .calculator-group input:focus, .calculator-group select:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        .calculator-result {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            border: 2px dashed var(--secondary);
+        }
+        
+        .commission-amount {
+            font-size: 2.0rem;
+            font-weight: 500;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+        
+        /* NEW: Package Toggle */
+        .package-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
+        
+        .toggle-btn {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-weight: 600;
+        }
+        
+        .toggle-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .haji-package-options {
+            display: none;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .package-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .package-option.active {
+            border-color: var(--primary);
+            background: rgba(112, 28, 26, 0.05);
+        }
+        
+        .package-option input {
+            margin-right: 10px;
+        }
+        
+        .package-details {
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .package-details h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .package-details ul {
+            padding-left: 20px;
+        }
+        
+        .package-details li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .calculator-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .calculator-container {
+                padding: 10px;
+                margin: 10px 0;
+                max-width: 100vw;
+                border-radius: 8px;
+                box-sizing: border-box;
+                overflow-x: hidden;
+            }
+            .calculator-header h2 {
+                font-size: 1.1rem;
+            }
+            .calculator-header p {
+                font-size: 0.95rem;
+            }
+            .calculator-inputs {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            .calculator-group {
+                margin-bottom: 8px;
+                min-width: 0;
+                width: 100%;
+            }
+            .calculator-group label {
+                font-size: 0.98rem;
+                margin-bottom: 5px;
+            }
+            .calculator-group input,
+            .calculator-group select {
+                font-size: 0.98rem;
+                padding: 8px 10px;
+                border-radius: 6px;
+                width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
+            }
+            .calculator-result {
+                padding: 10px;
+                font-size: 0.98rem;
+                border-radius: 8px;
+                word-break: break-word;
+            }
+            .commission-amount {
+                font-size: 1.2rem;
+                margin: 8px 0;
+            }
+            .text-center .btn-region {
+                width: 100%;
+                font-size: .75rem;
+                padding: 12px 0;
+                box-sizing: border-box;
+            }
+            .package-toggle {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        
+        /* ... (existing styles) ... */
+    </style>
+</head>
+<body>
+   <div style="display: flex; justify-content: center;">
+  <div style="width: 100%; max-width: 640px;">
+    <iframe src="https://danawiraprama.github.io/presentasiresellerelmarwa/" width="100%" height="1305" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+</div>
+    <!-- NEW: Enhanced Commission Calculator -->
+    <section class="calculator">
+        <div class="container">
+            <div class="calculator-container">
+                <div class="calculator-header">
+                    <h2><i class="fas fa-calculator"></i> Hitung Potensi Penghasilan Anda</h2>
+                    <p>Pilih jenis perjalanan dan paket untuk menghitung komisi reseller</p>
+                </div>
+                
+                <!-- Package Type Toggle -->
+                <div class="package-toggle">
+                    <div class="toggle-btn active" id="umroh-btn">
+                        <i class="fas fa-kaaba"></i> Perhitungan Umroh
+                    </div>
+                    <div class="toggle-btn" id="haji-btn">
+                        <i class="fas fa-mosque"></i> Perhitungan Haji
+                    </div>
+                </div>
+                
+                <!-- Umroh Calculator -->
+                <div id="umroh-calculator">
+                    <div class="calculator-inputs">
+                        <div class="calculator-group">
+                            <label for="jamaah-count">Jumlah Jamaah per Bulan:</label>
+                            <input type="number" id="jamaah-count" min="1" max="10" value="3">
+                        </div>
+                        
+                        <div class="calculator-group">
+                            <label for="region-select">Daerah Operasi:</label>
+                            <select id="region-select" class="calculator-group input">
+                                <option value="default">Pilih daerah Anda</option>
+                                <option value="jatim">Jawa Timur (Banyuwangi, Jember, Malang)</option>
+                                <option value="jabar">Jawa Barat (Bogor, Tasikmalaya, Cirebon)</option>
+                                <option value="luar">Luar Jawa (Lombok Barat, Deliserdang, Kutai)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Haji Calculator -->
+                <div id="haji-calculator" style="display: none;">
+                    <div class="calculator-inputs">
+                        <div class="calculator-group">
+                            <label for="haji-jamaah-count">Jumlah Jamaah:</label>
+                            <input type="number" id="haji-jamaah-count" min="1" max="10" value="1">
+                        </div>
+                        
+                        <div class="calculator-group">
+                            <label for="payment-status">Status Pembayaran:</label>
+                            <select id="payment-status" class="calculator-group input">
+                                <option value="dp">DP ($4500)</option>
+                                <option value="lunas">Lunas</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="haji-package-options" id="haji-package-options">
+                        <h4>Pilih Paket Haji:</h4>
+                        <div class="package-option" data-package="adn">
+                            <input type="radio" name="haji-package" id="adn-package" value="adn">
+                            <label for="adn-package">Paket Haji Adn ($15700)</label>
+                        </div>
+                        <div class="package-option" data-package="darussalam">
+                            <input type="radio" name="haji-package" id="darussalam-package" value="darussalam">
+                            <label for="darussalam-package">Paket Haji Darussalam ($10900)</label>
+                        </div>
+                        
+                        <div class="package-details" id="package-details">
+                            <h4>Detail Paket:</h4>
+                            <ul>
+                                <li>Komisi dasar: $200 per jamaah saat DP</li>
+                                <li>Tambahan komisi saat lunas: $800 (Adn) / $300 (Darussalam)</li>
+                                <li>Total komisi per jamaah: $1000 (Adn) / $500 (Darussalam)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator-result">
+                    <h3>Estimasi Penghasilan Anda:</h3>
+                    <div class="commission-amount" id="commission-result">Rp 4.500.000</div>
+                    <p id="commission-details">Komisi Rp 1.500.000 per jamaah + bonus daerah</p>
+                    <p class="highlight" id="bonus-info">* Bonus tambahan untuk daerah prioritas</p>
+                </div>
+                
+                <div class="text-center" style="margin-top: 20px;">
+                    <a href="https://elmarwa-umrohsesuaisunnah.safaruna.com/formulirdaftar" class="btn btn-region" target="_blank">
+                        <i class="fas fa-handshake"></i> Daftar Sekarang & Dapatkan Bonus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ... (existing sections) ... -->
+    
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+        
+        // Commission Calculator
+        const jamaahInput = document.getElementById('jamaah-count');
+        const regionSelect = document.getElementById('region-select');
+        const commissionAmount = document.getElementById('commission-result');
+        const commissionDetails = document.getElementById('commission-details');
+        const bonusInfo = document.getElementById('bonus-info');
+        
+        // Haji calculator elements
+        const hajiJamaahInput = document.getElementById('haji-jamaah-count');
+        const paymentStatus = document.getElementById('payment-status');
+        const hajiPackageOptions = document.querySelectorAll('input[name="haji-package"]');
+        
+        // Toggle buttons
+        const umrohBtn = document.getElementById('umroh-btn');
+        const hajiBtn = document.getElementById('haji-btn');
+        const umrohCalculator = document.getElementById('umroh-calculator');
+        const hajiCalculator = document.getElementById('haji-calculator');
+        const packageOptionsContainer = document.getElementById('haji-package-options');
+        const packageDetails = document.getElementById('package-details');
+        
+        // Set default values
+        let currentMode = 'umroh';
+        let selectedPackage = 'adn';
+        
+        // Function to format currency
+        function formatCurrency(amount, currency = 'IDR') {
+            if (currency === 'USD') {
+                return '$' + amount.toLocaleString('en-US');
+            }
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: currency,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+        
+        // Function to calculate commission
+        function calculateCommission() {
+            if (currentMode === 'umroh') {
+                const jamaahCount = parseInt(jamaahInput.value) || 0;
+                const region = regionSelect.value;
+                
+                // Base commission per pilgrim
+                let commissionPerJamaah = 1500000;
+                let bonus = 0;
+                
+                // Add regional bonuses
+                if (region === 'jatim') {
+                    bonus = 500000 * jamaahCount;
+                } else if (region === 'luar') {
+                    bonus = 700000 * jamaahCount;
+                }
+                
+                const totalCommission = (commissionPerJamaah * jamaahCount) + bonus;
+                
+                // Format to IDR currency
+                commissionAmount.textContent = formatCurrency(totalCommission);
+                commissionDetails.textContent = `Komisi Rp ${commissionPerJamaah.toLocaleString('id-ID')} per jamaah + bonus daerah`;
+                bonusInfo.textContent = region === 'default' ? 
+                    "* Pilih daerah untuk melihat bonus" : 
+                    `* Bonus daerah: Rp ${bonus.toLocaleString('id-ID')}`;
+                
+            } else {
+                const jamaahCount = parseInt(hajiJamaahInput.value) || 0;
+                const payment = paymentStatus.value;
+                
+                // Check if package is selected
+                if (!selectedPackage) {
+                    commissionAmount.textContent = 'Pilih paket haji';
+                    commissionDetails.textContent = 'Silakan pilih paket haji terlebih dahulu';
+                    bonusInfo.textContent = '';
+                    return;
+                }
+                
+                // Base commission
+                let commissionPerJamaah = 200;
+                let additionalFee = 0;
+                
+                // Calculate based on package and payment status
+                if (selectedPackage === 'adn') {
+                    if (payment === 'lunas') {
+                        additionalFee = 800;
+                    }
+                } else if (selectedPackage === 'darussalam') {
+                    if (payment === 'lunas') {
+                        additionalFee = 300;
+                    }
+                }
+                
+                const totalCommissionUSD = (commissionPerJamaah + additionalFee) * jamaahCount;
+                const totalCommissionIDR = totalCommissionUSD * 16000; // Assuming 1 USD = 16,000 IDR
+                
+                // Format results
+                commissionAmount.textContent = formatCurrency(totalCommissionIDR);
+                
+                if (payment === 'dp') {
+                    commissionDetails.textContent = `Komisi dasar: $${commissionPerJamaah} per jamaah (DP $4500)`;
+                    bonusInfo.textContent = `* Dapat tambahan $${selectedPackage === 'adn' ? 800 : 300} jika lunas`;
+                } else {
+                    commissionDetails.textContent = `Komisi total: $${commissionPerJamaah} + $${additionalFee} per jamaah`;
+                    bonusInfo.textContent = `* Untuk paket ${selectedPackage === 'adn' ? 'Adn ($15700)' : 'Darussalam ($10900)'}`;
+                }
+            }
+        }
+        
+        // Toggle between Umroh and Haji calculator
+        umrohBtn.addEventListener('click', () => {
+            currentMode = 'umroh';
+            umrohBtn.classList.add('active');
+            hajiBtn.classList.remove('active');
+            umrohCalculator.style.display = 'block';
+            hajiCalculator.style.display = 'none';
+            calculateCommission();
+        });
+        
+        hajiBtn.addEventListener('click', () => {
+            currentMode = 'haji';
+            hajiBtn.classList.add('active');
+            umrohBtn.classList.remove('active');
+            umrohCalculator.style.display = 'none';
+            hajiCalculator.style.display = 'block';
+            packageOptionsContainer.style.display = 'block';
+            calculateCommission();
+        });
+        
+        // Handle haji package selection
+        hajiPackageOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                selectedPackage = option.value;
+                
+                // Update UI
+                document.querySelectorAll('.package-option').forEach(opt => {
+                    if (opt.dataset.package === selectedPackage) {
+                        opt.classList.add('active');
+                    } else {
+                        opt.classList.remove('active');
+                    }
+                });
+                
+                calculateCommission();
+            });
+        });
+        
+        // Event listeners for inputs
+        jamaahInput.addEventListener('input', calculateCommission);
+        regionSelect.addEventListener('change', calculateCommission);
+        hajiJamaahInput.addEventListener('input', calculateCommission);
+        paymentStatus.addEventListener('change', calculateCommission);
+        
+        // Auto-scroll for commission calculator
+        document.querySelector('.btn-region').addEventListener('click', function(e) {
+            if (!this.getAttribute('href').startsWith('http')) {
+                e.preventDefault();
+                document.getElementById('form-daftar').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // Initial calculation
+        calculateCommission();
+        
+        // Set default package
+        document.getElementById('adn-package').checked = true;
+        document.querySelector('.package-option[data-package="adn"]').classList.add('active');
+    </script>
+</body>
+</html>
